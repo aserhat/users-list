@@ -1,6 +1,6 @@
 import userFetch from "./useFetch";
 
-export default function getUsers(url) {
+export default function getUsers(url, filter) {
   const users = userFetch("https://jsonplaceholder.typicode.com/users");
 
   const firstNames = [];
@@ -25,5 +25,13 @@ export default function getUsers(url) {
     if (!lastNames.includes(lastName)) lastNames.push(lastName);
   });
 
-  return { users, firstNames, lastNames };
+  let filterUsers = users;
+
+  if (filter.length >= 1) {
+    filterUsers = users.filter((str) => {
+      return str.name.toLowerCase().includes(filter.toLowerCase());
+    });
+  }
+
+  return { filterUsers, firstNames, lastNames };
 }

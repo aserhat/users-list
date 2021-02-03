@@ -23,19 +23,12 @@ const PageTitle = styled.h1`
 
 export default function DataLoader(props) {
   const [filter, setFilter] = useState("");
-  const { users, firstNames, lastNames } = getUsers(
-    "https://jsonplaceholder.typicode.com/users"
+  const { filterUsers, firstNames, lastNames } = getUsers(
+    "https://jsonplaceholder.typicode.com/users",
+    filter
   );
 
-  let filterUsers = users;
-
-  if (filter.length >= 1) {
-    filterUsers = users.filter((str) => {
-      return str.name.toLowerCase().includes(filter.toLowerCase());
-    });
-  }
-
-  const handleChange = (event) => {
+  const handleSearch = (event) => {
     if (event.target.value === "Select a name") {
       setFilter("");
     } else {
@@ -61,14 +54,14 @@ export default function DataLoader(props) {
               name="search"
               width="100%"
               value={filter}
-              onChange={handleChange}
+              onChange={handleSearch}
             />
           </center>
         </Col>
         <Col flex={4}>
           <center>
             <SearchLabel htmlFor="firstNames">By First Name: </SearchLabel>
-            <select name="firstNames" onChange={handleChange}>
+            <select name="firstNames" onChange={handleSearch}>
               <option>Select a name</option>
               {firstNames.map((firstName) => (
                 <option key={firstName}>{firstName}</option>
@@ -79,7 +72,7 @@ export default function DataLoader(props) {
         <Col flex={4}>
           <center>
             <SearchLabel htmlFor="lastNames">By Last Name: </SearchLabel>
-            <select name="lastNames" onChange={handleChange}>
+            <select name="lastNames" onChange={handleSearch}>
               <option>Select a name</option>
               {lastNames.map((lastName) => (
                 <option key={lastName}>{lastName}</option>
