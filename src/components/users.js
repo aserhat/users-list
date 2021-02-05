@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Row, Col } from "react-flexybox";
+import ContactMailTwoToneIcon from "@material-ui/icons/ContactMailTwoTone";
 
 const CardWrapper = styled.div`
   font-family: sans-serif;
@@ -26,9 +27,6 @@ const Card = styled.div`
     margin-bottom: 5px;
     height: 100%;
     font-size: 1rem;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-      "Segoe UI Symbol", "Noto Color Emoji";
 `;
 const CardBody = styled.div`
   -ms-flex: 1 1 auto;
@@ -59,9 +57,14 @@ const Users = ({ data }) => {
           <CardWrapper>
             <Card>
               <CardBody className="card-body">
-                <CardTitle>Name: {user.name}</CardTitle>
+                <CardTitle>
+                  <ContactMailTwoToneIcon></ContactMailTwoToneIcon>
+                </CardTitle>
+                <CardSubTitle>Name: {user.name}</CardSubTitle>
                 <CardSubTitle>Username: {user.username}</CardSubTitle>
                 <CardSubTitle>Email: {user.email}</CardSubTitle>
+                <CardSubTitle>Phone: {user.phone}</CardSubTitle>
+                <CardSubTitle>Website: {user.website}</CardSubTitle>
               </CardBody>
             </Card>
           </CardWrapper>

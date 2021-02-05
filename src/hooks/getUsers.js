@@ -1,7 +1,7 @@
 import userFetch from "./useFetch";
 
 export default function getUsers(url, filter) {
-  const users = userFetch("https://jsonplaceholder.typicode.com/users");
+  const users = userFetch(url);
 
   const firstNames = [];
   const lastNames = [];
