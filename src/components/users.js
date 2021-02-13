@@ -28,7 +28,7 @@ const CardSubTitle = styled.h6`
 `;
 const Users = ({ data }) => {
   return (
-    <Row fill={true}>
+    <Row fill={true} gutter="10">
       {data.map((user) => (
         <Col flex={4} sm={6} xs={12} key={user.id}>
           <Card>
